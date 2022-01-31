@@ -11,19 +11,9 @@
     <div id = "card" class="card-container">
         <?php
             include '../classes.php';
-            // $db = new DBase;
-            $mysql = new mysqli('127.0.0.1', 'root', 'root', 'new-tasks');
-
-            $user = 'root';
-            $password = 'root';
-            $host = '127.0.0.1';
-            $dbname = 'new-tasks';
-            $dsn = 'mysql:host=' . $host . ';dbname=' . $dbname;
-
-            // $pdo = getDb();
+            $db = new DBase;
         
-            $result = $pdo->query("SELECT * FROM `products`");
-            // $rows = $result->fetch_assoc();
+            $result = $db->getTable(products);
             $array = array();
             while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
                 array_push($array, ["id"=>$row["id"], "price"=> $row["price"], "description"=> $row["description"], "name"=> $row["name"]]); 
@@ -76,12 +66,7 @@
         <div id="New" class="num">
             <p>0</p>
         </div>
-    </a>
-    
-    
+    </a>    
     
 </body>
 </html>
-<?php
-    // $pdo->close();
-?>

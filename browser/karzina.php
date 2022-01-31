@@ -15,16 +15,10 @@
                 <th>Price</th>
             </tr>
             <?php 
-            // $mysql = new mysqli('127.0.0.1', 'root', 'root', 'new-tasks');
-            $user = 'root';
-            $password = 'root';
-            $host = '127.0.0.1';
-            $dbname = 'new-tasks';
-            $dsn = 'mysql:host=' . $host . ';dbname=' . $dbname;
+            include '../classes.php';
+            $db = new DBase;
 
-            $pdo = new PDO($dsn, $user, $password);
-
-            print_r($_COOKIE);
+            $pdo = $db->getDb();
             foreach($_COOKIE as $k => $v) {
     
             $str = (explode("_", $_COOKIE[$k]));
@@ -58,6 +52,5 @@
 
         <button class="set-busket" type="submit">confirm the order</button>
     </form>
-    <!-- <button>confirm the order</button>  -->
 </body>
 </html>

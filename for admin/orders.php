@@ -21,16 +21,18 @@
             <th>total price</th>
         </tr>
         <?php
-            // $mysql = new mysqli('127.0.0.1', 'root', 'root', 'new-tasks');
-            // $orders = $mysql->query("SELECT * FROM `gagik`"); // ordera get date
-            $user = 'root';
-            $password = 'root';
-            $host = '127.0.0.1';
-            $dbname = 'new-tasks';
-            $dsn = 'mysql:host=' . $host . ';dbname=' . $dbname;
+            include '../classes.php';
+            $db = new DBase;
+            $pdo = $db->getDb();
+            $orders = $db->getTable(gagik);
+            // $user = 'root';
+            // $password = 'root';
+            // $host = '127.0.0.1';
+            // $dbname = 'new-tasks';
+            // $dsn = 'mysql:host=' . $host . ';dbname=' . $dbname;
 
-            $pdo = new PDO($dsn, $user, $password);
-            $orders = $pdo->query("SELECT * FROM `gagik`");
+            // $pdo = new PDO($dsn, $user, $password);
+            // $orders = $pdo->query("SELECT * FROM `gagik`");
 
             while ($row = $orders->fetch(PDO::FETCH_ASSOC)) {
                 $userId = $row[user_id];
